@@ -1,3 +1,3 @@
 export default function HomePageVariantA() {
-  return <div>Home page</div>;
+  return <div className="pt-20">Home page</div>;
 }
