@@ -1,3 +1,7 @@
 export default function HomePageVariantB() {
-  return <div className="bg-green-400">HomePageVB</div>;
+  return (
+    <div className="h-full w-full ">
+      <p className="text-red-400  text-2xl font-bold italic underline">HomePageVBasdf</p>
+    </div>
+  );
 }
