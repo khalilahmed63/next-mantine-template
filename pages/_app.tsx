@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
-import Head from 'next/head';
-import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
+import { StoreProvider } from 'easy-peasy';
+import { useState } from 'react';
+import Head from 'next/head';
 import Main from '../components/global/Layout/Main';
+import store from '../store/index';
 import './globals.css';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
@@ -27,9 +29,12 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-          <Main>
-            <Component {...pageProps} />
-          </Main>
+          <StoreProvider store={store}>
+            <Main>
+              <Component {...pageProps} />
+            </Main>
+          </StoreProvider>
+
           <Notifications />
         </MantineProvider>
       </ColorSchemeProvider>
